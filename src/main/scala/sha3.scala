@@ -8,6 +8,8 @@ import freechips.rocketchip.tile._
 import org.chipsalliance.cde.config._
 import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.rocket.{TLBConfig, HellaCacheReq}
+import midas.targetutils.MakeRoCCBusyLatencyInsensitive
+import chisel3.experimental.{annotate, ChiselAnnotation}
 
 
 case object Sha3WidthP extends Field[Int]
@@ -162,6 +164,8 @@ class Sha3AccelImp(outer: Sha3Accel)(implicit p: Parameters) extends LazyRoCCMod
     dpath.io.stage := ctrl.io.stage
     dpath.io.aindex := ctrl.io.aindex
   }
+
+  MakeRoCCBusyLatencyInsensitive(io.busy)
 }
 
 class WithSha3BlackBox extends Config((site, here, up) => {
