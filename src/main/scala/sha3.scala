@@ -165,7 +165,7 @@ class Sha3AccelImp(outer: Sha3Accel)(implicit p: Parameters) extends LazyRoCCMod
     dpath.io.aindex := ctrl.io.aindex
   }
 
-  MakeRoCCBusyLatencyInsensitive(io.busy)
+  MakeRoCCBusyLatencyInsensitive(io.busy, io.cmd.ready, io.cmd.valid)
 }
 
 class WithSha3BlackBox extends Config((site, here, up) => {

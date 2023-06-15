@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/tmp/nvim.joonho.whangbo/TkY1Aa/6/Sha3BlackBox.v" into library work
+INFO: [VRFC 10-311] analyzing module CtrlModule
+INFO: [VRFC 10-311] analyzing module ThetaModule
+INFO: [VRFC 10-311] analyzing module RhoPiModule
+INFO: [VRFC 10-311] analyzing module ChiModule
+INFO: [VRFC 10-311] analyzing module IotaModule
+INFO: [VRFC 10-311] analyzing module DpathModule
+INFO: [VRFC 10-311] analyzing module Sha3BlackBox
