@@ -100,14 +100,16 @@ class DpathModule(val W: Int, val S: Int)(implicit p: Parameters) extends Module
       }
   }
 
+  val UInt5 = 5.U(log2Up(round_size_words).W)
+
   when(io.absorb){
     state := state
     if(p(Sha3PrintfEnable)){
       printf(midas.targetutils.SynthesizePrintf("SHA3 finished an iteration with index %d and message %x\n", io.aindex, io.message_in))
     }
     when(io.aindex < UInt(round_size_words)){
-      state((io.aindex%UInt(5))*UInt(5)+(io.aindex/UInt(5))) := 
-        state((io.aindex%UInt(5))*UInt(5)+(io.aindex/UInt(5))) ^ io.message_in
+      state((io.aindex%UInt5)*UInt5+(io.aindex/UInt5)) := 
+        state((io.aindex%UInt5)*UInt5+(io.aindex/UInt5)) ^ io.message_in
     }
   }
 
